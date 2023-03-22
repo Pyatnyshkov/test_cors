@@ -38,6 +38,8 @@ $(document).ready(function() {
       data: JSON.stringify(register),
       dataType: "json",
       contentType: "application/json",
+      headers: { "Accept": "application/json"},
+      crossDomain: true,
       success: function(data) {
         if (data.Success) {
           window.location = impaya_url + "session-id=" + data.SessionGUID;
