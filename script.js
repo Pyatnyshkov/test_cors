@@ -40,6 +40,9 @@ $(document).ready(function() {
       contentType: "application/json",
       headers: { "Accept": "application/json"},
       crossDomain: true,
+      beforeSend: function(xhr){
+        xhr.withCredentials = true;
+      },
       success: function(data) {
         if (data.Success) {
           window.location = impaya_url + "session-id=" + data.SessionGUID;
