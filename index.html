@@ -1,13 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script src="./postmessage.js"></script>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$('#button').on("click", function(){
+			var url = `https://test.egopay.ru/payments/request?session=${$('#session').val()}`;
+			console.log(url);
+			$('#frame').attr('src', url);
+		});
+		if (window.pm) {
+		window.pm.bind('EgoIframeCancel', function() {
+                $('#circle').css("color","green");
+            });
+		}
+	});
+</script>
 </head>
 <body>
-	<button>Press</button>
-	<script src="./jquery.js"></script
-    ><script src="./script.js"></script>
+	<input type="text" id="session" placeholder="SESSION" style="margin:10px;width: 200px; height: 30px;"/>
+	<p id="circle" style="color:red;font-size: 32px;">●</p>
+	<div id="button" style="margin:10px;line-height:30px;background-color: green; color: #ebebeb;width: 200px;height: 30px;text-align: center; cursor: pointer;">Открыть</div>
+	<iframe id="frame" style="width: 1024px;height: 768px;"></iframe>
 </body>
 </html>
