@@ -5,7 +5,7 @@
 <script type="text/javascript">
 	$( document ).ready(function() {
 		$('#button').on("click", function(){
-			var url = `https://test.egopay.ru/payments/request?session=${$('#session').val()}`;
+			var url = ${$('#session').val()};
 			console.log(url);
 			$('#frame').attr('src', url);
 		});
